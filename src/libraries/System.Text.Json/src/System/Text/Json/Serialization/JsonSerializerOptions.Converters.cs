@@ -41,7 +41,11 @@ namespace System.Text.Json
 
         private static Dictionary<Type, JsonConverter> GetDefaultSimpleConverters()
         {
+#if NET6_0_OR_GREATER
+            const int NumberOfSimpleConverters = 24;
+#else
             const int NumberOfSimpleConverters = 22;
+#endif
             var converters = new Dictionary<Type, JsonConverter>(NumberOfSimpleConverters);
 
             // Use a dictionary for simple converters.
@@ -51,6 +55,10 @@ namespace System.Text.Json
             Add(JsonMetadataServices.ByteArrayConverter);
             Add(JsonMetadataServices.CharConverter);
             Add(JsonMetadataServices.DateTimeConverter);
+#if NET6_0_OR_GREATER
+            Add(JsonMetadataServices.DateOnlyConverter);
+            Add(JsonMetadataServices.TimeOnlyConverter);
+#endif
             Add(JsonMetadataServices.DateTimeOffsetConverter);
             Add(JsonMetadataServices.DoubleConverter);
             Add(JsonMetadataServices.DecimalConverter);

@@ -315,6 +315,12 @@
   <data name="FormatDateTime" xml:space="preserve">
     <value>The JSON value is not in a supported DateTime format.</value>
   </data>
+  <data name="FormatDateOnly" xml:space="preserve">
+    <value>The JSON value is not in a supported DateOnly format.</value>
+  </data>
+  <data name="FormatTimeOnly" xml:space="preserve">
+    <value>The JSON value is not in a supported TimeOnly format.</value>
+  </data>
   <data name="FormatDateTimeOffset" xml:space="preserve">
     <value>The JSON value is not in a supported DateTimeOffset format.</value>
   </data>

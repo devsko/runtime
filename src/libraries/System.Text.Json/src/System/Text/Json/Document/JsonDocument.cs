@@ -674,6 +674,82 @@ namespace System.Text.Json
             return false;
         }
 
+#if NET6_0_OR_GREATER
+        internal bool TryGetValue(int index, out DateOnly value)
+        {
+            throw new NotImplementedException();
+
+            //CheckNotDisposed();
+
+            //DbRow row = _parsedData.Get(index);
+
+            //CheckExpectedType(JsonTokenType.String, row.TokenType);
+
+            //ReadOnlySpan<byte> data = _utf8Json.Span;
+            //ReadOnlySpan<byte> segment = data.Slice(row.Location, row.SizeOrLength);
+
+            //if (!JsonHelpers.IsValidDateTimeOffsetParseLength(segment.Length))
+            //{
+            //    value = default;
+            //    return false;
+            //}
+
+            //// Segment needs to be unescaped
+            //if (row.HasComplexChildren)
+            //{
+            //    return JsonReaderHelper.TryGetEscapedDateTime(segment, out value);
+            //}
+
+            //Debug.Assert(segment.IndexOf(JsonConstants.BackSlash) == -1);
+
+            //if (JsonHelpers.TryParseAsISO(segment, out DateTime tmp))
+            //{
+            //    value = DateOnly.FromDateTime(tmp);
+            //    return true;
+            //}
+
+            //value = default;
+            //return false;
+        }
+
+        internal bool TryGetValue(int index, out TimeOnly value)
+        {
+            throw new NotImplementedException();
+
+            //CheckNotDisposed();
+
+            //DbRow row = _parsedData.Get(index);
+
+            //CheckExpectedType(JsonTokenType.String, row.TokenType);
+
+            //ReadOnlySpan<byte> data = _utf8Json.Span;
+            //ReadOnlySpan<byte> segment = data.Slice(row.Location, row.SizeOrLength);
+
+            //if (!JsonHelpers.IsValidDateTimeOffsetParseLength(segment.Length))
+            //{
+            //    value = default;
+            //    return false;
+            //}
+
+            //// Segment needs to be unescaped
+            //if (row.HasComplexChildren)
+            //{
+            //    return JsonReaderHelper.TryGetEscapedDateTime(segment, out value);
+            //}
+
+            //Debug.Assert(segment.IndexOf(JsonConstants.BackSlash) == -1);
+
+            //if (JsonHelpers.TryParseAsISO(segment, out DateTime tmp))
+            //{
+            //    value = DateOnly.FromDateTime(tmp);
+            //    return true;
+            //}
+
+            //value = default;
+            //return false;
+        }
+#endif
+
         internal bool TryGetValue(int index, out DateTimeOffset value)
         {
             CheckNotDisposed();

@@ -1044,6 +1044,110 @@ namespace System.Text.Json
             throw ThrowHelper.GetFormatException();
         }
 
+#if NET6_0_OR_GREATER
+        /// <summary>
+        ///   Attempts to represent the current JSON string as a <see cref="DateOnly"/>.
+        /// </summary>
+        /// <param name="value">Receives the value.</param>
+        /// <remarks>
+        ///   This method does not create a DateOnly representation of values other than JSON strings.
+        /// </remarks>
+        /// <returns>
+        ///   <see langword="true"/> if the string can be represented as a <see cref="DateOnly"/>,
+        ///   <see langword="false"/> otherwise.
+        /// </returns>
+        /// <exception cref="InvalidOperationException">
+        ///   This value's <see cref="ValueKind"/> is not <see cref="JsonValueKind.String"/>.
+        /// </exception>
+        /// <exception cref="ObjectDisposedException">
+        ///   The parent <see cref="JsonDocument"/> has been disposed.
+        /// </exception>
+        public bool TryGetDateOnly(out DateOnly value)
+        {
+            CheckValidInstance();
+
+            return _parent.TryGetValue(_idx, out value);
+        }
+
+        /// <summary>
+        ///   Gets the value of the element as a <see cref="DateOnly"/>.
+        /// </summary>
+        /// <remarks>
+        ///   This method does not create a DateOnly representation of values other than JSON strings.
+        /// </remarks>
+        /// <returns>The value of the element as a <see cref="DateOnly"/>.</returns>
+        /// <exception cref="InvalidOperationException">
+        ///   This value's <see cref="ValueKind"/> is not <see cref="JsonValueKind.String"/>.
+        /// </exception>
+        /// <exception cref="FormatException">
+        ///   The value cannot be represented as a <see cref="DateOnly"/>.
+        /// </exception>
+        /// <exception cref="ObjectDisposedException">
+        ///   The parent <see cref="JsonDocument"/> has been disposed.
+        /// </exception>
+        /// <seealso cref="ToString"/>
+        public DateOnly GetDateOnly()
+        {
+            if (TryGetDateOnly(out DateOnly value))
+            {
+                return value;
+            }
+
+            throw ThrowHelper.GetFormatException();
+        }
+
+        /// <summary>
+        ///   Attempts to represent the current JSON string as a <see cref="TimeOnly"/>.
+        /// </summary>
+        /// <param name="value">Receives the value.</param>
+        /// <remarks>
+        ///   This method does not create a TimeOnly representation of values other than JSON strings.
+        /// </remarks>
+        /// <returns>
+        ///   <see langword="true"/> if the string can be represented as a <see cref="TimeOnly"/>,
+        ///   <see langword="false"/> otherwise.
+        /// </returns>
+        /// <exception cref="InvalidOperationException">
+        ///   This value's <see cref="ValueKind"/> is not <see cref="JsonValueKind.String"/>.
+        /// </exception>
+        /// <exception cref="ObjectDisposedException">
+        ///   The parent <see cref="JsonDocument"/> has been disposed.
+        /// </exception>
+        public bool TryGetTimeOnly(out TimeOnly value)
+        {
+            CheckValidInstance();
+
+            return _parent.TryGetValue(_idx, out value);
+        }
+
+        /// <summary>
+        ///   Gets the value of the element as a <see cref="TimeOnly"/>.
+        /// </summary>
+        /// <remarks>
+        ///   This method does not create a TimeOnly representation of values other than JSON strings.
+        /// </remarks>
+        /// <returns>The value of the element as a <see cref="TimeOnly"/>.</returns>
+        /// <exception cref="InvalidOperationException">
+        ///   This value's <see cref="ValueKind"/> is not <see cref="JsonValueKind.String"/>.
+        /// </exception>
+        /// <exception cref="FormatException">
+        ///   The value cannot be represented as a <see cref="TimeOnly"/>.
+        /// </exception>
+        /// <exception cref="ObjectDisposedException">
+        ///   The parent <see cref="JsonDocument"/> has been disposed.
+        /// </exception>
+        /// <seealso cref="ToString"/>
+        public TimeOnly GetTimeOnly()
+        {
+            if (TryGetTimeOnly(out TimeOnly value))
+            {
+                return value;
+            }
+
+            throw ThrowHelper.GetFormatException();
+        }
+#endif
+
         /// <summary>
         ///   Attempts to represent the current JSON string as a <see cref="DateTimeOffset"/>.
         /// </summary>

@@ -574,6 +574,75 @@ namespace System.Text.Json
             return value;
         }
 
+#if NET6_0_OR_GREATER
+        /// <summary>
+        /// Parses the current JSON token value from the source as a <see cref="DateOnly"/>.
+        /// Returns the value if the entire UTF-8 encoded token value can be successfully parsed to a <see cref="DateOnly"/>
+        /// value.
+        /// Throws exceptions otherwise.
+        /// </summary>
+        /// <exception cref="InvalidOperationException">
+        /// Thrown if trying to get the value of a JSON token that is not a <see cref="JsonTokenType.String"/>.
+        /// <seealso cref="TokenType" />
+        /// </exception>
+        /// <exception cref="FormatException">
+        /// Thrown if the JSON token value is of an unsupported format. Only a subset of ISO 8601 formats are supported.
+        /// </exception>
+        public DateOnly GetDateOnly()
+        {
+            if (!TryGetDateOnly(out DateOnly value))
+            {
+                throw ThrowHelper.GetFormatException(DataType.DateOnly);
+            }
+
+            return value;
+        }
+
+        internal DateOnly GetDateOnlyNoValidation()
+        {
+            if (!TryGetDateOnlyCore(out DateOnly value))
+            {
+                throw ThrowHelper.GetFormatException(DataType.DateOnly);
+            }
+
+            return value;
+        }
+
+        /// <summary>
+        /// Parses the current JSON token value from the source as a <see cref="TimeOnly"/>.
+        /// Returns the value if the entire UTF-8 encoded token value can be successfully parsed to a <see cref="TimeOnly"/>
+        /// value.
+        /// Throws exceptions otherwise.
+        /// </summary>
+        /// <exception cref="InvalidOperationException">
+        /// Thrown if trying to get the value of a JSON token that is not a <see cref="JsonTokenType.String"/>.
+        /// <seealso cref="TokenType" />
+        /// </exception>
+        /// <exception cref="FormatException">
+        /// Thrown if the JSON token value is of an unsupported format. Only a subset of ISO 8601 formats are supported.
+        /// </exception>
+        public TimeOnly GetTimeOnly()
+        {
+            if (!TryGetTimeOnly(out TimeOnly value))
+            {
+                throw ThrowHelper.GetFormatException(DataType.TimeOnly);
+            }
+
+            return value;
+        }
+
+        internal TimeOnly GetTimeOnlyNoValidation()
+        {
+            if (!TryGetTimeOnlyCore(out TimeOnly value))
+            {
+                throw ThrowHelper.GetFormatException(DataType.TimeOnly);
+            }
+
+            return value;
+        }
+
+#endif
+
         /// <summary>
         /// Parses the current JSON token value from the source as a <see cref="DateTimeOffset"/>.
         /// Returns the value if the entire UTF-8 encoded token value can be successfully parsed to a <see cref="DateTimeOffset"/>
@@ -1116,6 +1185,148 @@ namespace System.Text.Json
             value = default;
             return false;
         }
+
+#if NET6_0_OR_GREATER
+        /// <summary>
+        /// Parses the current JSON token value from the source as a <see cref="DateOnly"/>.
+        /// Returns <see langword="true"/> if the entire UTF-8 encoded token value can be successfully
+        /// parsed to a <see cref="DateOnly"/> value.
+        /// Returns <see langword="false"/> otherwise.
+        /// </summary>
+        /// <exception cref="InvalidOperationException">
+        /// Thrown if trying to get the value of a JSON token that is not a <see cref="JsonTokenType.String"/>.
+        /// <seealso cref="TokenType" />
+        /// </exception>
+        public bool TryGetDateOnly(out DateOnly value)
+        {
+            if (TokenType != JsonTokenType.String)
+            {
+                throw ThrowHelper.GetInvalidOperationException_ExpectedString(TokenType);
+            }
+
+            return TryGetDateOnlyCore(out value);
+        }
+
+        internal bool TryGetDateOnlyCore(out DateOnly value)
+        {
+            throw new NotImplementedException();
+
+            //ReadOnlySpan<byte> span = stackalloc byte[0];
+
+            //if (HasValueSequence)
+            //{
+            //    long sequenceLength = ValueSequence.Length;
+
+            //    if (!JsonHelpers.IsValidDateTimeOffsetParseLength(sequenceLength))
+            //    {
+            //        value = default;
+            //        return false;
+            //    }
+
+            //    Debug.Assert(sequenceLength <= JsonConstants.MaximumEscapedDateTimeOffsetParseLength);
+            //    Span<byte> stackSpan = stackalloc byte[(int)sequenceLength];
+
+            //    ValueSequence.CopyTo(stackSpan);
+            //    span = stackSpan;
+            //}
+            //else
+            //{
+            //    if (!JsonHelpers.IsValidDateTimeOffsetParseLength(ValueSpan.Length))
+            //    {
+            //        value = default;
+            //        return false;
+            //    }
+
+            //    span = ValueSpan;
+            //}
+
+            //if (_stringHasEscaping)
+            //{
+            //    return JsonReaderHelper.TryGetEscapedDateTime(span, out value);
+            //}
+
+            //Debug.Assert(span.IndexOf(JsonConstants.BackSlash) == -1);
+
+            //if (JsonHelpers.TryParseAsISO(span, out DateTime tmp))
+            //{
+            //    value = tmp;
+            //    return true;
+            //}
+
+            //value = default;
+            //return false;
+        }
+
+        /// <summary>
+        /// Parses the current JSON token value from the source as a <see cref="TimeOnly"/>.
+        /// Returns <see langword="true"/> if the entire UTF-8 encoded token value can be successfully
+        /// parsed to a <see cref="TimeOnly"/> value.
+        /// Returns <see langword="false"/> otherwise.
+        /// </summary>
+        /// <exception cref="InvalidOperationException">
+        /// Thrown if trying to get the value of a JSON token that is not a <see cref="JsonTokenType.String"/>.
+        /// <seealso cref="TokenType" />
+        /// </exception>
+        public bool TryGetTimeOnly(out TimeOnly value)
+        {
+            if (TokenType != JsonTokenType.String)
+            {
+                throw ThrowHelper.GetInvalidOperationException_ExpectedString(TokenType);
+            }
+
+            return TryGetTimeOnlyCore(out value);
+        }
+
+        internal bool TryGetTimeOnlyCore(out TimeOnly value)
+        {
+            throw new NotImplementedException();
+
+            //ReadOnlySpan<byte> span = stackalloc byte[0];
+
+            //if (HasValueSequence)
+            //{
+            //    long sequenceLength = ValueSequence.Length;
+
+            //    if (!JsonHelpers.IsValidDateTimeOffsetParseLength(sequenceLength))
+            //    {
+            //        value = default;
+            //        return false;
+            //    }
+
+            //    Debug.Assert(sequenceLength <= JsonConstants.MaximumEscapedDateTimeOffsetParseLength);
+            //    Span<byte> stackSpan = stackalloc byte[(int)sequenceLength];
+
+            //    ValueSequence.CopyTo(stackSpan);
+            //    span = stackSpan;
+            //}
+            //else
+            //{
+            //    if (!JsonHelpers.IsValidDateTimeOffsetParseLength(ValueSpan.Length))
+            //    {
+            //        value = default;
+            //        return false;
+            //    }
+
+            //    span = ValueSpan;
+            //}
+
+            //if (_stringHasEscaping)
+            //{
+            //    return JsonReaderHelper.TryGetEscapedDateTime(span, out value);
+            //}
+
+            //Debug.Assert(span.IndexOf(JsonConstants.BackSlash) == -1);
+
+            //if (JsonHelpers.TryParseAsISO(span, out DateTime tmp))
+            //{
+            //    value = tmp;
+            //    return true;
+            //}
+
+            //value = default;
+            //return false;
+        }
+#endif
 
         /// <summary>
         /// Parses the current JSON token value from the source as a <see cref="DateTimeOffset"/>.

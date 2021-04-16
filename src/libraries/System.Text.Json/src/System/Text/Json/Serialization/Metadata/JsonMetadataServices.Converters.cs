@@ -37,6 +37,20 @@ namespace System.Text.Json.Serialization.Metadata
         public static JsonConverter<DateTime> DateTimeConverter => s_dateTimeConverter ??= new DateTimeConverter();
         private static JsonConverter<DateTime>? s_dateTimeConverter;
 
+#if NET6_0_OR_GREATER
+        /// <summary>
+        /// Returns a <see cref="JsonConverter{T}"/> instance that converts <see cref="DateOnly"/> values.
+        /// </summary>
+        public static JsonConverter<DateOnly> DateOnlyConverter => s_dateOnlyConverter ??= new DateOnlyConverter();
+        private static JsonConverter<DateOnly>? s_dateOnlyConverter;
+
+        /// <summary>
+        /// Returns a <see cref="JsonConverter{T}"/> instance that converts <see cref="TimeOnly"/> values.
+        /// </summary>
+        public static JsonConverter<TimeOnly> TimeOnlyConverter => s_timeOnlyConverter ??= new TimeOnlyConverter();
+        private static JsonConverter<TimeOnly>? s_timeOnlyConverter;
+#endif
+
         /// <summary>
         /// Returns a <see cref="JsonConverter{T}"/> instance that converts <see cref="DateTimeOffset"/> values.
         /// </summary>

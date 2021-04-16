@@ -633,6 +633,12 @@ namespace System.Text.Json
                 case DataType.DateTime:
                     message = SR.FormatDateTime;
                     break;
+                case DataType.DateOnly:
+                    message = SR.FormatDateOnly;
+                    break;
+                case DataType.TimeOnly:
+                    message = SR.FormatTimeOnly;
+                    break;
                 case DataType.DateTimeOffset:
                     message = SR.FormatDateTimeOffset;
                     break;
@@ -722,6 +728,8 @@ namespace System.Text.Json
     {
         Boolean,
         DateTime,
+        DateOnly,
+        TimeOnly,
         DateTimeOffset,
         Base64String,
         Guid,

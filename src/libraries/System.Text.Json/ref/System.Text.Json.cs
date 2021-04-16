@@ -47,6 +47,9 @@ namespace System.Text.Json
         public bool GetBoolean() { throw null; }
         public byte GetByte() { throw null; }
         public byte[] GetBytesFromBase64() { throw null; }
+#if NET6_0_OR_GREATER
+        public System.DateOnly GetDateOnly() { throw null; }
+#endif
         public System.DateTime GetDateTime() { throw null; }
         public System.DateTimeOffset GetDateTimeOffset() { throw null; }
         public decimal GetDecimal() { throw null; }
@@ -63,6 +66,9 @@ namespace System.Text.Json
         public sbyte GetSByte() { throw null; }
         public float GetSingle() { throw null; }
         public string? GetString() { throw null; }
+#if NET6_0_OR_GREATER
+        public System.TimeOnly GetTimeOnly() { throw null; }
+#endif
         [System.CLSCompliantAttribute(false)]
         public ushort GetUInt16() { throw null; }
         [System.CLSCompliantAttribute(false)]
@@ -73,6 +79,9 @@ namespace System.Text.Json
         public override string? ToString() { throw null; }
         public bool TryGetByte(out byte value) { throw null; }
         public bool TryGetBytesFromBase64([System.Diagnostics.CodeAnalysis.NotNullWhenAttribute(true)] out byte[]? value) { throw null; }
+#if NET6_0_OR_GREATER
+        public bool TryGetDateOnly(out System.DateOnly value) { throw null; }
+#endif
         public bool TryGetDateTime(out System.DateTime value) { throw null; }
         public bool TryGetDateTimeOffset(out System.DateTimeOffset value) { throw null; }
         public bool TryGetDecimal(out decimal value) { throw null; }
@@ -87,6 +96,9 @@ namespace System.Text.Json
         [System.CLSCompliantAttribute(false)]
         public bool TryGetSByte(out sbyte value) { throw null; }
         public bool TryGetSingle(out float value) { throw null; }
+#if NET6_0_OR_GREATER
+        public bool TryGetTimeOnly(out System.TimeOnly value) { throw null; }
+#endif
         [System.CLSCompliantAttribute(false)]
         public bool TryGetUInt16(out ushort value) { throw null; }
         [System.CLSCompliantAttribute(false)]
@@ -295,6 +307,9 @@ namespace System.Text.Json
         public byte GetByte() { throw null; }
         public byte[] GetBytesFromBase64() { throw null; }
         public string GetComment() { throw null; }
+#if NET6_0_OR_GREATER
+        public System.DateOnly GetDateOnly() { throw null; }
+#endif
         public System.DateTime GetDateTime() { throw null; }
         public System.DateTimeOffset GetDateTimeOffset() { throw null; }
         public decimal GetDecimal() { throw null; }
@@ -307,6 +322,9 @@ namespace System.Text.Json
         public sbyte GetSByte() { throw null; }
         public float GetSingle() { throw null; }
         public string? GetString() { throw null; }
+#if NET6_0_OR_GREATER
+        public System.TimeOnly GetTimeOnly() { throw null; }
+#endif
         [System.CLSCompliantAttribute(false)]
         public ushort GetUInt16() { throw null; }
         [System.CLSCompliantAttribute(false)]
@@ -317,6 +335,9 @@ namespace System.Text.Json
         public void Skip() { }
         public bool TryGetByte(out byte value) { throw null; }
         public bool TryGetBytesFromBase64([System.Diagnostics.CodeAnalysis.NotNullWhenAttribute(true)] out byte[]? value) { throw null; }
+#if NET6_0_OR_GREATER
+        public bool TryGetDateOnly(out System.DateOnly value) { throw null; }
+#endif
         public bool TryGetDateTime(out System.DateTime value) { throw null; }
         public bool TryGetDateTimeOffset(out System.DateTimeOffset value) { throw null; }
         public bool TryGetDecimal(out decimal value) { throw null; }
@@ -328,6 +349,9 @@ namespace System.Text.Json
         [System.CLSCompliantAttribute(false)]
         public bool TryGetSByte(out sbyte value) { throw null; }
         public bool TryGetSingle(out float value) { throw null; }
+#if NET6_0_OR_GREATER
+        public bool TryGetTimeOnly(out System.TimeOnly value) { throw null; }
+#endif
         [System.CLSCompliantAttribute(false)]
         public bool TryGetUInt16(out ushort value) { throw null; }
         [System.CLSCompliantAttribute(false)]
@@ -433,6 +457,9 @@ namespace System.Text.Json
         public void WriteStartObject(System.ReadOnlySpan<char> propertyName) { }
         public void WriteStartObject(string propertyName) { }
         public void WriteStartObject(System.Text.Json.JsonEncodedText propertyName) { }
+#if NET6_0_OR_GREATER
+        public void WriteString(System.ReadOnlySpan<byte> utf8PropertyName, System.DateOnly value) { }
+#endif
         public void WriteString(System.ReadOnlySpan<byte> utf8PropertyName, System.DateTime value) { }
         public void WriteString(System.ReadOnlySpan<byte> utf8PropertyName, System.DateTimeOffset value) { }
         public void WriteString(System.ReadOnlySpan<byte> utf8PropertyName, System.Guid value) { }
@@ -440,6 +467,12 @@ namespace System.Text.Json
         public void WriteString(System.ReadOnlySpan<byte> utf8PropertyName, System.ReadOnlySpan<char> value) { }
         public void WriteString(System.ReadOnlySpan<byte> utf8PropertyName, string? value) { }
         public void WriteString(System.ReadOnlySpan<byte> utf8PropertyName, System.Text.Json.JsonEncodedText value) { }
+#if NET6_0_OR_GREATER
+        public void WriteString(System.ReadOnlySpan<byte> utf8PropertyName, System.TimeOnly value) { }
+#endif
+#if NET6_0_OR_GREATER
+        public void WriteString(System.ReadOnlySpan<char> propertyName, System.DateOnly value) { }
+#endif
         public void WriteString(System.ReadOnlySpan<char> propertyName, System.DateTime value) { }
         public void WriteString(System.ReadOnlySpan<char> propertyName, System.DateTimeOffset value) { }
         public void WriteString(System.ReadOnlySpan<char> propertyName, System.Guid value) { }
@@ -447,6 +480,12 @@ namespace System.Text.Json
         public void WriteString(System.ReadOnlySpan<char> propertyName, System.ReadOnlySpan<char> value) { }
         public void WriteString(System.ReadOnlySpan<char> propertyName, string? value) { }
         public void WriteString(System.ReadOnlySpan<char> propertyName, System.Text.Json.JsonEncodedText value) { }
+#if NET6_0_OR_GREATER
+        public void WriteString(System.ReadOnlySpan<char> propertyName, System.TimeOnly value) { }
+#endif
+#if NET6_0_OR_GREATER
+        public void WriteString(string propertyName, System.DateOnly value) { }
+#endif
         public void WriteString(string propertyName, System.DateTime value) { }
         public void WriteString(string propertyName, System.DateTimeOffset value) { }
         public void WriteString(string propertyName, System.Guid value) { }
@@ -454,6 +493,12 @@ namespace System.Text.Json
         public void WriteString(string propertyName, System.ReadOnlySpan<char> value) { }
         public void WriteString(string propertyName, string? value) { }
         public void WriteString(string propertyName, System.Text.Json.JsonEncodedText value) { }
+#if NET6_0_OR_GREATER
+        public void WriteString(string propertyName, System.TimeOnly value) { }
+#endif
+#if NET6_0_OR_GREATER
+        public void WriteString(System.Text.Json.JsonEncodedText propertyName, System.DateOnly value) { }
+#endif
         public void WriteString(System.Text.Json.JsonEncodedText propertyName, System.DateTime value) { }
         public void WriteString(System.Text.Json.JsonEncodedText propertyName, System.DateTimeOffset value) { }
         public void WriteString(System.Text.Json.JsonEncodedText propertyName, System.Guid value) { }
@@ -461,6 +506,12 @@ namespace System.Text.Json
         public void WriteString(System.Text.Json.JsonEncodedText propertyName, System.ReadOnlySpan<char> value) { }
         public void WriteString(System.Text.Json.JsonEncodedText propertyName, string? value) { }
         public void WriteString(System.Text.Json.JsonEncodedText propertyName, System.Text.Json.JsonEncodedText value) { }
+#if NET6_0_OR_GREATER
+        public void WriteString(System.Text.Json.JsonEncodedText propertyName, System.TimeOnly value) { }
+#endif
+#if NET6_0_OR_GREATER
+        public void WriteStringValue(System.DateOnly value) { }
+#endif
         public void WriteStringValue(System.DateTime value) { }
         public void WriteStringValue(System.DateTimeOffset value) { }
         public void WriteStringValue(System.Guid value) { }
@@ -468,6 +519,9 @@ namespace System.Text.Json
         public void WriteStringValue(System.ReadOnlySpan<char> value) { }
         public void WriteStringValue(string? value) { }
         public void WriteStringValue(System.Text.Json.JsonEncodedText value) { }
+#if NET6_0_OR_GREATER
+        public void WriteStringValue(System.TimeOnly value) { }
+#endif
     }
 }
 namespace System.Text.Json.Node
@@ -765,6 +819,9 @@ namespace System.Text.Json.Serialization.Metadata
         public static System.Text.Json.Serialization.JsonConverter<byte[]> ByteArrayConverter { get { throw null; } }
         public static System.Text.Json.Serialization.JsonConverter<byte> ByteConverter { get { throw null; } }
         public static System.Text.Json.Serialization.JsonConverter<char> CharConverter { get { throw null; } }
+#if NET6_0_OR_GREATER
+        public static System.Text.Json.Serialization.JsonConverter<System.DateOnly> DateOnlyConverter { get { throw null; } }
+#endif
         public static System.Text.Json.Serialization.JsonConverter<System.DateTime> DateTimeConverter { get { throw null; } }
         public static System.Text.Json.Serialization.JsonConverter<System.DateTimeOffset> DateTimeOffsetConverter { get { throw null; } }
         public static System.Text.Json.Serialization.JsonConverter<decimal> DecimalConverter { get { throw null; } }
@@ -778,6 +835,9 @@ namespace System.Text.Json.Serialization.Metadata
         public static System.Text.Json.Serialization.JsonConverter<sbyte> SByteConverter { get { throw null; } }
         public static System.Text.Json.Serialization.JsonConverter<float> SingleConverter { get { throw null; } }
         public static System.Text.Json.Serialization.JsonConverter<string> StringConverter { get { throw null; } }
+#if NET6_0_OR_GREATER
+        public static System.Text.Json.Serialization.JsonConverter<System.TimeOnly> TimeOnlyConverter { get { throw null; } }
+#endif
         [System.CLSCompliantAttribute(false)]
         public static System.Text.Json.Serialization.JsonConverter<ushort> UInt16Converter { get { throw null; } }
         [System.CLSCompliantAttribute(false)]
